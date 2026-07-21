@@ -45,6 +45,7 @@ const wordRoutes = require("./routes/wordRoutes");
 const userAnswerRoutes = require("./routes/userAnswerRoutes");
 const subscriptionRoutes = require("./routes/subscriptionRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const panelRoutes = require("./routes/panelRoutes");
 app.use("/api/users", userRoutes);
 app.use("/api/languages", languageRoutes);
 app.use("/api/learning-tracks", learningTrackRoutes);
@@ -52,6 +53,7 @@ app.use("/api/words", wordRoutes);
 app.use("/api/user-answers", userAnswerRoutes);
 app.use("/api/subscriptions", subscriptionRoutes);
 app.use("/admin", adminRoutes);
+app.use("/panel/v1", panelRoutes);
 const inactivityReminder = require("./jobs/inactivityReminder");
 inactivityReminder.start();
 
@@ -72,7 +74,7 @@ process.on("unhandledRejection", (reason, promise) => {
   console.error("[unhandledRejection]", reason);
 });
 
-const PORT = 3035;
+const PORT = Number(process.env.PORT) || 3035;
 
 if (require.main === module) {
   app.listen(PORT, () => {
