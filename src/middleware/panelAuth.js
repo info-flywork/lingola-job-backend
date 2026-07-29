@@ -1,7 +1,7 @@
 const crypto = require("crypto");
 
 function configuredPanelKey() {
-  return String(process.env.PANEL_API_KEY || process.env.ADMIN_API_KEY || "").trim();
+  return String(process.env.LINGOLAJOB_PANEL_API_KEY || process.env.PANEL_API_KEY || process.env.ADMIN_API_KEY || "").trim();
 }
 
 function suppliedPanelKey(req) {
